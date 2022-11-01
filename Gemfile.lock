@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/jekyll/minima
+  remote: https://github.com/jekyll/minima.git
   revision: 41b97699af658128fa9983e5312ca5516641f335
   specs:
     minima (2.5.1)
@@ -76,11 +76,11 @@ DEPENDENCIES
   jekyll (~> 3.9.0)
   jekyll-feed (~> 0.6)
   kramdown-parser-gfm
-  minima (~> 2.5)!
+  minima!
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.0)
   webrick (~> 1.7)
 
 BUNDLED WITH
-   2.3.5
+   2.3.15
