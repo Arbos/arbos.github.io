@@ -1,0 +1,28 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+$base-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif;
+$text-color:       #bbbbbb;
+$background-color: #181818;
+$brand-color:      #79b8ff;
+$grey-color-dark:  lighten(green, 5%);
+$grey-color-light: lighten($background-color, 20%);
+
+@import "minima";
+
+
+h1, h2, strong {
+  color: lighten($text-color, 10%);
+}
+
+a {
+  &:visited {
+    color: $brand-color;
+  }
+}
+
+pre,
+code {
+  background-color: lighten($background-color, 3%);
+}
