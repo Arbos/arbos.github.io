@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>FreshLook</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="FreshLook" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="/nwn2/fbx/tutorial4.html" />
+<meta property="og:url" content="/nwn2/fbx/tutorial4.html" />
+<meta property="og:site_name" content="FreshLook" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="FreshLook" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"FreshLook","url":"/nwn2/fbx/tutorial4.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="FreshLook" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">FreshLook</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/nwn2/">NWN2</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <h1 id="tutorial-animated-multipart-placeable">Tutorial: Animated multipart placeable</h1>
+
+<h1 id="what-is-a-multipart-placeable">What is a multipart placeable?</h1>
+
+<p>In NWN2, a placeable can be made of several parts. One part must be the <strong>main
+part</strong> and the other parts are the <strong>attached parts</strong>. Each part is stored in
+his own MDB file. The attached parts must be named same as the main part
+followed by an underscore and a two digit number that starts with <strong>01</strong> for
+the first attached part. For example, the placeable <strong>Chest (01 Medium)</strong> is
+composed of the following parts:</p>
+
+<ul>
+  <li>Main part: <strong>PLC_ML_CHESTM01.MDB</strong></li>
+  <li>Attached part: <strong>PLC_ML_CHESTM01_01.MDB</strong></li>
+</ul>
+
+<p>These files, particulary, are stored in <strong>Data\NWN2_Models.zip</strong>, located at
+the NWN2 installation directory.</p>
+
+<h1 id="why-we-need-multipart-placeables">Why we need multipart placeables?</h1>
+
+<p>We need multipart placeables in order to apply a different animation curve to
+each part. For example, the main part of a chest and the attached part have
+different animations when opening or closing. The main part is always idle
+while the attached part isn’t.</p>
+
+<h1 id="placeable-animations">Placeable Animations</h1>
+
+<p>A placeable can have many animations. Each animation is stored in a file named
+same as the placeable followed by an underscore, the name of the animation and
+the extension GR2. There is a set of standard placeable animations that are
+used by NWN2:</p>
+
+<ul>
+  <li>placeable_name_<strong>IDLE</strong>.GR2: Default animation. Used also for the closed
+state.</li>
+  <li>placeable_name_<strong>PLC_OPENIDLE</strong>.GR2: Used for the open state.</li>
+  <li>placeable_name_<strong>PLC_OPEN</strong>.GR2: Used for the opening animation.</li>
+  <li>placeable_name_<strong>PLC_CLOSE</strong>.GR2: Used for the closing animation.</li>
+  <li>placeable_name_<strong>PLC_TURNON</strong>.GR2: Used for the activating animation.</li>
+  <li>placeable_name_<strong>DR_OPEN1</strong>.GR2: Used for the opening door animation
+(direction 1, e.g. push).</li>
+  <li>placeable_name_<strong>DR_OPEN2</strong>.GR2: Used for the opening door animation
+(direction 2, e.g. pull).</li>
+</ul>
+
+<p>For an animated placeable, only the <strong>IDLE</strong> animation is required.</p>
+
+<p>For the placeable <strong>Chest (01 Medium)</strong>, we find in <strong>Data\lod-merge.zip</strong> two
+animations:</p>
+
+<ul>
+  <li><strong>PLC_ML_CHESTM01_IDLE.GR2</strong></li>
+  <li><strong>PLC_ML_CHESTM01_PLC_OPENIDLE.GR2</strong></li>
+</ul>
+
+<h1 id="animation-blending">Animation Blending</h1>
+
+<p>As you could see before, the placeable <strong>Chest (01 Medium)</strong> only has two
+animations:</p>
+
+<ul>
+  <li><strong>PLC_ML_CHESTM01_IDLE.GR2</strong>: Idle animation for the closed state.</li>
+  <li><strong>PLC_ML_CHESTM01_PLC_OPENIDLE.GR2</strong>: Idle animation for the open state.</li>
+</ul>
+
+<p>However, if you click the chest in game to open or close it, you will see
+opening and closing animations. Why is that? That is because the transition
+from one animation to another animation is not instant. Instead, the NWN2
+engine transitions gradually, blending the two animations. This way, if you
+want to animate a placeable, you can save from making some animations as long
+as the blending produces the result you want.</p>
+
+<p>Note: For the animation blending to work, the <strong>IDLE</strong> animation must have
+only one frame.</p>
+
+<h1 id="converting-animated-multipart-placeable-from-nwn2-to-fbx">Converting animated multipart placeable from NWN2 to FBX</h1>
+
+<p>To convert an animated multipart placeable to FBX you must pass to <strong>nw2fbx</strong>
+all the parts of the placeable and an animation. We are going to take as
+example the placeable <strong>Weather Vane</strong>. Drag &amp; drop these files to <strong>nw2fbx</strong>:</p>
+
+<ul>
+  <li><strong>PLC_MC_WVANE01.mdb</strong></li>
+  <li><strong>PLC_MC_WVANE01_01.MDB</strong></li>
+  <li><strong>PLC_MC_Wvane01_idle.GR2</strong></li>
+</ul>
+
+<p>We are going to analyze the generated FBX. This is a screenshot of Blender with
+the FBX imported into it.</p>
+
+<p><img src="img/weather_vane.jpg" alt="" /></p>
+
+<ul>
+  <li>The main part, <strong>PLC_MC_WVANE01</strong>, is child of the empty object
+<strong>PLC_MC_WVANE01.PIVOT</strong>. This is as explained in the animated placeable
+tutorial.</li>
+  <li>The attached part <strong>PLC_MC_WVANE01_01</strong> is child of the main part.</li>
+  <li>If you play the animation, you will see that each part has a different
+animation. The main part, which is the base part, remains still, while the
+attached part rotates erratically as a consequence of the wind.</li>
+</ul>
+
+<h1 id="converting-animated-multipart-placeable-from-fbx-to-nwn2">Converting animated multipart placeable from FBX to NWN2</h1>
+
+<p>First, you should read the tutorial about animating a placeable, which explains
+the fundamentals. This section isn’t going to be as detailed as that tutorial
+because I’m going to assume you know the fundamentals.</p>
+
+<h2 id="step-1-create-the-models-and-animations">Step 1: Create the models and animations</h2>
+
+<ol>
+  <li>Using your DCC of choice (Blender, 3ds Max, Maya, …) create the models and
+animations. You must create the main part, the attached parts and the other
+objects as needed (collision mesh, walk mesh and so on).</li>
+  <li>The attached parts must be named same as the main part followed by an
+underscore and a two digit number that starts with <strong>01</strong> for the first
+attached part.</li>
+  <li>You must create the animation pivot as explained in the tutorial about
+animation a placeable. You must name the animation pivot as the main part
+and append “.PIVOT” to the end. See the weather vane screenshot for an
+example.</li>
+  <li>The main part must be child of the animation pivot and the attached parts
+must be children of the main part. See the weather vane screenshot for an
+example.</li>
+</ol>
+
+<p><strong>Note</strong>: Don’t animate the animation pivot, only the placeable parts.</p>
+
+<h2 id="step-2-generate-a-mdb-file-for-each-part">Step 2: Generate a MDB file for each part</h2>
+
+<ol>
+  <li>Export to FBX only the main part and convert the FBX to MDB using
+<strong>fbx2nw</strong>.</li>
+  <li>Do the same for each attached part.</li>
+</ol>
+
+<p><strong>Note:</strong> I’m not sure if having each part in its own MDB file is a must or
+not. I’ve inspected quite a lot of NWN2 animated placeables and all of them
+follow this pattern. However, I tried to animate a placeable with all the parts
+in the same MDB and it seemed to work, but who knows if there are situations
+where it fails…</p>
+
+<h2 id="step-3-generate-the-gr2-files">Step 3: Generate the GR2 files</h2>
+
+<ol>
+  <li>Export all objects and an animation to a single FBX.</li>
+  <li>Convert the FBX to NWN2 using <strong>fbx2nw</strong>. This sould generate a MDB file
+containing all the parts, a GR2 file containing a skeleton and another GR2
+file containing the animation.</li>
+  <li>Ignore the generated MDB, which contains all the parts.</li>
+</ol>
+
+<h2 id="step-4-edit-placeables2da">Step 4: Edit placeables.2da</h2>
+
+<p>We have generated all the files we need: a MDB for each part, a GR2 containing
+the skeleton and a GR2 file containing the animation. Now, you must add or edit
+the row of the placeable in placeables.2da the following way:</p>
+
+<ol>
+  <li>Column <strong>PlaceableModelType</strong>: set to 2 to indicate it’s an animated
+placeable.</li>
+  <li>Column <strong>NWN2_Skeleton</strong>: the name of the GR2 file containing the skeleton
+without the file extension. For example: <strong>PLC_MC_WVANE01</strong>.</li>
+  <li>Column <strong>AttachedModelName</strong>: if the placeable has just one attached part,
+you can set the name of the attached part. In any case, you can set the name
+of the main part follow by an underscore and two question marks. For
+example: <strong>PLC_MC_WVANE01<em>01** or **PLC_MC_WVANE01</em>??</strong>.</li>
+  <li>Column <strong>SoundAppType</strong>: this is a reference to <strong>placeableobjsnds.2da</strong>,
+which defines a “placeable sound set” consisting of entries for sound to
+play on opened, closed, etc. The default row, row 0, is the row for a medium
+wood chest, so that is the sound set that will play if this entry is left as
+<code class="language-plaintext highlighter-rouge">****</code>.</li>
+</ol>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

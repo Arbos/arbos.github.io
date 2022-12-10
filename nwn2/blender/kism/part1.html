@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>FreshLook</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="FreshLook" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="/nwn2/blender/kism/part1.html" />
+<meta property="og:url" content="/nwn2/blender/kism/part1.html" />
+<meta property="og:site_name" content="FreshLook" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="FreshLook" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"FreshLook","url":"/nwn2/blender/kism/part1.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="FreshLook" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">FreshLook</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/nwn2/">NWN2</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <h1 id="part-1-nwn2-blender-introduction-tutorial---animations">Part 1: NWN2 Blender Introduction tutorial - Animations</h1>
+
+<p><em>By Kism of Jude Inc.</em></p>
+
+<p>Hello! We will be going over the basic tutorial to get you started on your
+development adventure, no need for prior experience with Blender, or NWN2
+modding. Take your time, once you get the hang of it, it only takes 15 seconds
+per animation. (feel free to edit blend file) You will need:</p>
+
+<ul>
+  <li>A way to open Zip files</li>
+  <li>Blender 2.91: <a href="https://download.blender.org/release/">https://download.blender.org/release/</a></li>
+  <li>A Mixamo Account: <a href="https://www.mixamo.com/#/">https://www.mixamo.com/#/</a></li>
+  <li><a href="https://nwn2.fandom.com/wiki/PlayCustomAnimation:_List_of_animations">Nwn2 animation list</a></li>
+  <li>Nwn2MDK 0.14:  https://github.com/Arbos/nwn2mdk/releases/tag/0.14
+Shout-out to <FreshLook> and <Skywing></Skywing></FreshLook></li>
+  <li>Animation Tutorial: <a href="https://www.dropbox.com/s/qx644w5r2k17phk/Animation%20Tutorial-Blender.rar?dl=0">https://www.dropbox.com/s/qx644w5r2k17phk/Animation%20Tutorial-Blender.rar?dl=0</a>
+Original design given to me by <em>Wobbin</em> Thanks for the kick start bro.</li>
+</ul>
+
+<h2 id="introduction">Introduction!</h2>
+
+<p><img src="images/image17.png" alt="" /></p>
+
+<p>The Blend file comes with a pregenerated set up so with everything you will
+need.  If this is your first time with blender below is a bit of information
+you can use to start you off.  If not, go ahead and skip to <strong>Getting started
+in mixamo!</strong></p>
+
+<p>ViewPort (Sub-section) Object-Mode:</p>
+
+<p><img src="images/image9.png" alt="" /></p>
+
+<p>Familiarize yourself with the middle mouse button scrolling, it is very similar
+to Nwn2 gameplay so it should be relatively easy to get used to, and is the
+primary area you will be using while using this tutorial.</p>
+
+<p>Property Outliner:</p>
+
+<p><img src="images/image24.png" alt="" /></p>
+
+<p>This is the section where all the objects/models/and mechanics for the set up
+are stored, so if you are looking for something specific you can find them
+here. To see the contents inside both the <strong>Include/Exclude Box</strong>, and the
+<strong>Viewport Display</strong> eye-icon needs to be checked.. This is to reduce lag on
+larger projects. Go ahead and check the <strong>Human/Male</strong> <strong>Include/Exclude Box</strong>.</p>
+
+<p>ViewPort(Sub-section)Pose-Mode:</p>
+
+<p><img src="images/image8.png" alt="" /></p>
+
+<p>Pose mode is the animation tab, where you will be applying animation to the
+skeletons.</p>
+
+<p>DopeSheet (Sub-section) Action Editor                   expand to show ACTION MENU</p>
+
+<p><img src="images/image11.png" alt="" /></p>
+
+<p>The Dope Sheet will show you if the Selected Object(s) Animation Data and the
+Keyframes</p>
+
+<p>Time Line:</p>
+
+<p><img src="images/image21.png" alt="" /></p>
+
+<p>Play options, and the START and END frames options can be adjusted here.</p>
+
+<h2 id="getting-started-with-mixamo">Getting Started With Mixamo!</h2>
+
+<p><img src="images/image12.png" alt="" /></p>
+
+<p>After making a Mixamo account you will want to select the Upload Character
+Option and import the FBX file that came with the Animation Tutorial. Make sure
+you select the animation tab at the top left</p>
+
+<p><img src="images/image12.png" alt="" /></p>
+
+<p><em>This tutorial version has its cape limits spinning too quickly or upside down
+animations could cause the cloak clip through the character.</em></p>
+
+<p>Scroll, or Search through the animations and hit download</p>
+
+<p><img src="images/image22.png" alt="" /></p>
+
+<p>Back to the “Outliner” Tab in blender we are going to check the Include/Exlude
+Box so the Retargeting armature is visible. No need to click the enable in
+viewport option as we can already see the Neverwinter character. You only need
+to be able to select the “Target’’ Armature.</p>
+
+<p><img src="images/image10.png" alt="" /></p>
+
+<p>Import the FBX file animation you chose on the Mixamo website:</p>
+
+<p><img src="images/image20.png" alt="" /></p>
+
+<p>After importing the FBX, you will see two new Objects enter the viewport and
+are preselected.  You can delete these, once the animation is imported into
+blender it will automatically save in the ACTION MENU, down in the Timeline.</p>
+
+<p>Select the Target Armature in the Outliner Tab</p>
+
+<p><img src="images/image19.png" alt="" /></p>
+
+<p>Left click Target Armature</p>
+
+<p>Move to the Timeline Action Menu, and select the animation you imported while
+having the target armature selected.</p>
+
+<p><img src="images/image14.png" alt="" /></p>
+
+<p>Note the START and END Frames of the animation in the Timeline(adjust end frames to match)</p>
+
+<p>Object Mode                      Orange highlight means primary/Red means secondary</p>
+
+<p>Left click (p_hhmcapewing_skel) Shift+Left click (p_hhm_skel). Control+Tab which will change your Viewport from “Object” to “Pose” mode</p>
+
+<p>Pose Mode</p>
+
+<p>press A to select all bones.Select the Pose Tab and navigate to “Bake Action”.</p>
+
+<p>Select the Pose Tab and navigate to “Bake Action”.</p>
+
+<p>Bake Action (using pregnerated animation for example)</p>
+
+<p>Press OK after you have checked Visual Keying</p>
+
+<p>Congrats! You are halfway there!
+Nicely Done! (pardon me, my main computer died, will update this later)</p>
+
+<p>Time to Export!</p>
+
+<p>This set up runs in FBX format, so we will export this file to the NWN2MDK folder.</p>
+
+<p>Export Settings</p>
+
+<p>Be sure your export settings look like the image above.
+Selected Objects: Checked</p>
+
+<p>Armature:
+Uncheck: Add Leaf Bones</p>
+
+<p>Bake Animations: Checked
+Key All Bones: Checked
+Uncheck: NLA Strips
+Uncheck: All Actions
+Uncheck: Force Start/End Keying</p>
+
+<p>Naming!  (using the website provided) (I selected the basic unarmed idle for the tutorial)</p>
+
+<p>Export FBX!</p>
+
+<p>&lt;NWN2MDK FOLDER!&gt;</p>
+
+<p>Inside the folder you will find the P_hhm_una_idle.FBX you exported from blender., Drag and Drop the file on top of the Application fbx2nw This will generate a new file named p_hhm_una_idle.GR2(Format Nwn2 uses)</p>
+
+<p>&lt;NWN2MDK FOLDER!&gt;</p>
+
+<p>Move the new file to your neverwinter nights 2 Override Folder in your Documents folder.</p>
+
+<p>Open the Character creation screen in NWN2!</p>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
