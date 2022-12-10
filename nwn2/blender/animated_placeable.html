@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>FreshLook</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="FreshLook" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="/nwn2/blender/animated_placeable.html" />
+<meta property="og:url" content="/nwn2/blender/animated_placeable.html" />
+<meta property="og:site_name" content="FreshLook" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="FreshLook" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"FreshLook","url":"/nwn2/blender/animated_placeable.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="FreshLook" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">FreshLook</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/nwn2/">NWN2</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <h1 id="blender-add-on-for-neverwinter-nights-2">Blender Add-on for <em>Neverwinter Nights 2</em></h1>
+
+<h1 id="tutorial-animating-a-simple-placeable">Tutorial: Animating a simple placeable</h1>
+
+<p>In this tutorial we are going to take the banner of Tyr, which is a placeable
+included in NWN2, and make it animated. But first we are going to explain some
+basics.</p>
+
+<p>This tutorial uses Blender 3.3.1.</p>
+
+<h1 id="placeable-animations">Placeable Animations</h1>
+
+<p>A placeable can have many animations. Each animation is stored in a file named
+same as the placeable followed by an underscore, the name of the animation and
+the extension GR2. There is a set of standard placeable animations that are
+used by NWN2:</p>
+
+<ul>
+  <li>placeable_name_<strong>IDLE</strong>.GR2: Default animation. Used also for the closed
+state.</li>
+  <li>placeable_name_<strong>PLC_OPENIDLE</strong>.GR2: Animation for the open state.</li>
+  <li>placeable_name_<strong>PLC_OPEN</strong>.GR2: Opening animation (from closed to open).</li>
+  <li>placeable_name_<strong>PLC_CLOSE</strong>.GR2: Closing animation (from open to closed).</li>
+  <li>placeable_name_<strong>PLC_TURNON</strong>.GR2: Activating animation.</li>
+  <li>placeable_name_<strong>DR_OPEN1</strong>.GR2: Opening door animation (direction 1, e.g.
+push).</li>
+  <li>placeable_name_<strong>DR_OPEN2</strong>.GR2: Opening door animation (direction 2, e.g.
+pull).</li>
+</ul>
+
+<p>Only the <strong>IDLE</strong> animation is required.</p>
+
+<h1 id="animation-blending">Animation Blending</h1>
+
+<p>For the placeable <strong>Chest (01 Medium)</strong>, we find in <code class="language-plaintext highlighter-rouge">Data\lod-merge.zip</code> two
+animations:</p>
+
+<ul>
+  <li><strong>PLC_ML_CHESTM01_IDLE.GR2</strong>: Idle animation for the closed state.</li>
+  <li><strong>PLC_ML_CHESTM01_PLC_OPENIDLE.GR2</strong>: Idle animation for the open state.</li>
+</ul>
+
+<p>However, if you click the chest in game to open or close it, you will see
+opening and closing animations. Why is that? That is because the transition
+from one animation to another animation is not instant. Instead, the NWN2
+engine transitions gradually, blending the two animations. This way, if you
+want to animate a placeable, you can save from making some animations as long
+as the blending produces the result you want.</p>
+
+<p><strong>Note:</strong> For the animation blending to work, the <strong>IDLE</strong> animation must have
+only one frame.</p>
+
+<h1 id="step-1-import-the-mdb">Step 1: Import the MDB</h1>
+
+<ol>
+  <li>Extract <strong>PLC_MC_TyrBanner.MDB</strong> from <strong>Data\NWN2_Models.zip</strong> located at
+the NWN2 install directory.</li>
+  <li>Open Blender.</li>
+  <li>
+    <p>Go to <strong>File</strong> &gt; <strong>Import</strong> &gt; <strong>Neverwinter Nights 2 (.mdb/.gr2)</strong></p>
+
+    <p><img src="import.png" alt="Import" /></p>
+  </li>
+  <li>
+    <p>Navigate to the directory where <strong>PLC_MC_TyrBanner.MDB</strong> is located, select
+it and click <strong>Import MDB/GR2</strong> or double click the file.</p>
+
+    <p><strong>Note</strong>: The import function should automatically extract the textures used
+by the models (<strong>PLC_MC_TyrBanner.dds</strong> and <strong>PLC_MC_TyrBanner_N.dds</strong>).</p>
+  </li>
+</ol>
+
+<h1 id="step-2-animate-the-model">Step 2: Animate the model</h1>
+
+<p>Now animate the model as you wish.</p>
+
+<h1 id="step-3-export-the-gr2-skeleton">Step 3: Export the GR2 skeleton</h1>
+
+<ol>
+  <li>
+    <p>In object mode, select the banner, go to the panel <strong>NWN2</strong> in the object
+properties and check <strong>Base Part</strong>.</p>
+
+    <p><img src="base_part.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Go to <strong>File</strong> &gt; <strong>Export</strong> &gt; <strong>Neverwinter Nights 2 (.gr2)</strong></p>
+
+    <p><img src="export_gr2.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Select <strong>Skeletons</strong> in the <strong>Export</strong> field.</p>
+
+    <p><img src="export_skeleton.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Navigate to the directory where you want to export, type the file name
+<strong>PLC_MC_TyrBanner.gr2</strong> and click <strong>Export GR2</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="step-4-export-the-gr2-animation">Step 4: Export the GR2 animation</h1>
+
+<ol>
+  <li>
+    <p>Go to <strong>File</strong> &gt; <strong>Export</strong> &gt; <strong>Neverwinter Nights 2 (.gr2)</strong></p>
+
+    <p><img src="export_gr2.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Select <strong>Animation</strong> in the <strong>Export</strong> field.</p>
+
+    <p><img src="export_animation.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Navigate to the directory where you want to export, type the file name
+<strong>PLC_MC_TyrBanner_idle.gr2</strong> and click <strong>Export GR2</strong>.</p>
+  </li>
+</ol>
+
+<h1 id="step-5-edit-placeables2da">Step 5: Edit placeables.2da</h1>
+
+<p>We have generated all the files we need, <strong>PLC_MC_TyrBanner.gr2</strong> and
+<strong>PLC_MC_TyrBanner_idle.gr2</strong>, but now we must link the placeable to the
+skeleton. To do that, you must edit the file <strong>placeables.2da</strong> and modify the
+line of the placeable as follows:</p>
+
+<ol>
+  <li>Column <strong>PlaceableModelType</strong>: set to 2.</li>
+  <li>Column <strong>NWN2_Skeleton</strong>: set to <strong>PLC_MC_TyrBanner</strong>.</li>
+</ol>
+
+<p>Video showing final result:
+<a href="https://youtu.be/tB5HyjDmG0A">https://youtu.be/tB5HyjDmG0A</a></p>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
